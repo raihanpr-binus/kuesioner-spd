@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kuesioner Evaluasi Aplikasi SPD</title>
     <style>
+        /* --- EARTH TONE PASTEL COLOR PALETTE (DARKER GREEN + TERRACOTTA) --- */
         :root {
             --bg-color: #f6f4ee; 
             --card-bg: #ffffff;
@@ -41,6 +42,7 @@
             border-radius: 16px;
             box-shadow: 0 10px 40px rgba(120, 115, 105, 0.08);
             border: 1px solid var(--border-color);
+            position: relative;
         }
 
         /* Header & Intro Styling */
@@ -88,7 +90,6 @@
             border-radius: 3px;
         }
 
-        /* Kotak Transisi Sopan */
         .polite-transition {
             background-color: var(--accent-bg);
             border-left: 4px solid var(--primary-color);
@@ -165,14 +166,6 @@
             background-color: #fff;
         }
 
-        /* Styling Input Teks Khusus Searchable Dropdown */
-        input.form-control[list] {
-            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22none%22%20stroke%3D%22%238b8882%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2211%22%20cy%3D%2211%22%20r%3D%228%22%3E%3C%2Fcircle%3E%3Cline%20x1%3D%2221%22%20y1%3D%2221%22%20x2%3D%2216.65%22%20y2%3D%2216.65%22%3E%3C%2Fline%3E%3C%2Fsvg%3E");
-            background-repeat: no-repeat;
-            background-position: right 16px top 50%;
-            background-size: 16px auto;
-        }
-
         select.form-control {
             appearance: none;
             background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%238b8882%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
@@ -195,6 +188,82 @@
             border-color: var(--border-color);
         }
 
+        /* --- STYLING CUSTOM SEARCHABLE DROPDOWN --- */
+        .custom-dropdown {
+            position: relative;
+            display: block;
+            width: 100%;
+        }
+
+        .dropdown-btn {
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background-color: #fff;
+            color: var(--text-muted); 
+        }
+        
+        .dropdown-btn.selected {
+            color: var(--text-main); 
+        }
+
+        .dropdown-btn::after {
+            content: "▼";
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            width: 100%;
+            max-height: 280px;
+            overflow-y: auto;
+            border: 1px solid var(--primary-color);
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            z-index: 100;
+            margin-top: 5px;
+        }
+
+        .dropdown-content.show {
+            display: block;
+        }
+
+        .dropdown-search {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 14px 16px 14px 40px;
+            font-size: 15px;
+            border: none;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            background-color: var(--accent-bg);
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20fill%3D%22none%22%20stroke%3D%22%238b8882%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2211%22%20cy%3D%2211%22%20r%3D%228%22%3E%3C%2Fcircle%3E%3Cline%20x1%3D%2221%22%20y1%3D%2221%22%20x2%3D%2216.65%22%20y2%3D%2216.65%22%3E%3C%2Fline%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: 12px 14px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .dropdown-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            color: var(--text-main);
+            transition: background-color 0.2s;
+            font-size: 15px;
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--matrix-hover);
+            color: var(--primary-dark);
+            font-weight: 500;
+        }
+
         /* --- STYLING KHUSUS UNTUK MATRIX LIKERT (GRID) --- */
         .construct-wrapper {
             background-color: var(--accent-bg);
@@ -215,7 +284,6 @@
             margin-bottom: 6px;
         }
 
-        /* Pewarnaan Khusus Untuk Label [5 Pertanyaan] */
         .question-count {
             color: var(--accent-dark);
             font-size: 0.9em;
@@ -345,6 +413,30 @@
             transition: opacity 0.5s ease-in-out;
         }
 
+        /* --- STYLING UNTUK HALAMAN SUKSES (THANK YOU) --- */
+        #successMessage {
+            text-align: center;
+            padding: 60px 20px;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        #successMessage h2 {
+            color: var(--primary-dark);
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        #successMessage p {
+            color: var(--text-muted);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         /* --- RESPONSIVE MOBILE --- */
         @media (max-width: 768px) {
             .container { padding: 30px 20px; }
@@ -402,125 +494,140 @@
 <body>
 
 <div class="container">
-    <div class="form-header">
-        <h1>Kuesioner Evaluasi Penggunaan Aplikasi Surat Perjalanan Dinas (SPD)</h1>
-        
-        <div class="intro-text">
-            <p>Yth. Bapak/Ibu/Saudara/i,</p>
-            <p>Perkenalkan, nama saya Raihan Pradhika Rangkuti, mahasiswa S2 program studi Magister Manajemen Sistem Informasi di Universitas Bina Nusantara. Saat ini, saya sedang menyelesaikan penelitian tesis Magister yang berfokus pada efisiensi digitalisasi administrasi perkantoran, lebih khususnya terkait Surat Perjalanan Dinas (SPD).</p>
-            <p><strong>Mengapa Kuesioner Ini Dibuat?</strong><br>
-            Saat ini, banyak perusahaan dan instansi yang telah beralih dan mewajibkan karyawannya untuk menggunakan Aplikasi Surat Perjalanan Dinas (SPD) secara digital. Karena sifatnya yang "wajib pakai", timbul sebuah pertanyaan penting: <em>Apakah aplikasi tersebut benar-benar mempermudah pekerjaan Anda, atau justru menambah beban administrasi baru?</em></p>
-            <p>Oleh karena itu, penelitian ini bertujuan untuk mengevaluasi apakah fitur-fitur pada aplikasi SPD yang Bapak/Ibu gunakan saat ini sudah benar-benar selaras dengan kebutuhan alur kerja sehari-hari. Penilaian Anda akan membantu mengukur tingkat kesuksesan sistem ini, mulai dari kualitas aplikasinya, kelengkapan informasinya, hingga seberapa besar efisiensi waktu yang Bapak/Ibu rasakan secara nyata.</p>
-            <p>Kuesioner ini ditujukan bagi karyawan dari berbagai institusi yang pernah mengajukan perjalanan dinas menggunakan sistem digital di kantornya masing-masing. Pengisian hanya akan menyita waktu sekitar 5–10 menit.</p>
-            <p>Seluruh respons dan identitas Bapak/Ibu dijamin kerahasiaannya dan murni digunakan untuk keperluan analisis akademis.</p>
-            <p>Atas waktu, kesediaan, dan partisipasi Bapak/Ibu, saya ucapkan terima kasih.</p>
-        </div>
+    
+    <div id="successMessage" style="display: none;">
+        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 20px;">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+        <h2>Terima Kasih!</h2>
+        <p>Tanggapan Anda telah berhasil disimpan di dalam sistem kami.<br>Waktu dan partisipasi Anda sangat berharga bagi kelancaran penelitian tesis ini.</p>
     </div>
 
-    <form id="kuesionerForm">
-        
-        <h2 class="section-title">A. Identitas Responden</h2>
-
-        <div class="question-block" style="background-color: #eef1ed; padding: 20px; border-radius: 10px; border: 1px solid #dce2da;">
-            <span class="question-text" style="color: var(--primary-dark); font-weight: 600;">1. Apakah Bapak/Ibu/Saudara/i pernah mengajukan Surat Perjalanan Dinas (SPD) menggunakan aplikasi/website/sistem digital?</span>
-            <div class="radio-group">
-                <label class="radio-option"><input type="radio" name="pernah_pakai" value="Ya" required> Ya, Pernah</label>
-                <label class="radio-option"><input type="radio" name="pernah_pakai" value="Tidak"> Tidak, Belum Pernah</label>
+    <div id="formWrapper">
+        <div class="form-header">
+            <h1>Kuesioner Evaluasi Penggunaan Aplikasi Surat Perjalanan Dinas (SPD)</h1>
+            
+            <div class="intro-text">
+                <p>Yth. Bapak/Ibu/Saudara/i,</p>
+                <p>Perkenalkan, nama saya <strong>Raihan Pradhika Rangkuti</strong>, mahasiswa S2 program studi Magister Manajemen Sistem Informasi di Universitas Bina Nusantara. Saat ini, saya sedang menyelesaikan penelitian tesis Magister yang berfokus pada efisiensi digitalisasi administrasi perkantoran, lebih khususnya terkait Surat Perjalanan Dinas (SPD).</p>
+                <p><strong>Mengapa Kuesioner Ini Dibuat?</strong><br>
+                Saat ini, banyak perusahaan dan instansi yang telah beralih dan mewajibkan karyawannya untuk menggunakan Aplikasi Surat Perjalanan Dinas (SPD) secara digital. Karena sifatnya yang "wajib pakai", timbul sebuah pertanyaan penting: <em>Apakah aplikasi tersebut benar-benar mempermudah pekerjaan Anda, atau justru menambah beban administrasi baru?</em></p>
+                <p>Oleh karena itu, penelitian ini bertujuan untuk mengevaluasi apakah fitur-fitur pada aplikasi SPD yang Bapak/Ibu gunakan saat ini sudah benar-benar selaras dengan kebutuhan alur kerja sehari-hari. Penilaian Anda akan membantu mengukur tingkat kesuksesan sistem ini, mulai dari kualitas aplikasinya, kelengkapan informasinya, hingga seberapa besar efisiensi waktu yang Bapak/Ibu rasakan secara nyata.</p>
+                <p>Kuesioner ini ditujukan bagi karyawan dari berbagai institusi yang pernah mengajukan perjalanan dinas menggunakan sistem digital di kantornya masing-masing. Pengisian hanya akan menyita waktu sekitar 5–10 menit.</p>
+                <p>Seluruh respons dan identitas Bapak/Ibu dijamin kerahasiaannya dan murni digunakan untuk keperluan analisis akademis.</p>
+                <p>Atas waktu, kesediaan, dan partisipasi Bapak/Ibu, saya ucapkan terima kasih.</p>
             </div>
         </div>
 
-        <div id="lanjutanForm" style="display: none;">
+        <form id="kuesionerForm">
             
-            <div class="polite-transition">
-                Terima kasih atas konfirmasi Anda. Dengan kerendahan hati, saya memohon kesediaan Bapak/Ibu/Saudara/i untuk meluangkan waktu sejenak untuk melengkapi bagian pertanyaan di bawah ini.
-            </div>
+            <h2 class="section-title">A. Identitas Responden</h2>
 
-            <div class="question-block">
-                <span class="question-text">2. Jenis Kelamin:</span>
+            <div class="question-block" style="background-color: #eef1ed; padding: 20px; border-radius: 10px; border: 1px solid #dce2da;">
+                <span class="question-text" style="color: var(--primary-dark); font-weight: 600;">1. Apakah Bapak/Ibu/Saudara/i pernah mengajukan Surat Perjalanan Dinas (SPD) menggunakan aplikasi/website/sistem digital?</span>
                 <div class="radio-group">
-                    <label class="radio-option"><input type="radio" name="jk" value="Pria" required> Pria</label>
-                    <label class="radio-option"><input type="radio" name="jk" value="Wanita"> Wanita</label>
+                    <label class="radio-option"><input type="radio" name="pernah_pakai" value="Ya" required> Ya, Pernah</label>
+                    <label class="radio-option"><input type="radio" name="pernah_pakai" value="Tidak"> Tidak, Belum Pernah</label>
                 </div>
             </div>
 
-            <div class="question-block">
-                <span class="question-text">3. Usia Anda:</span>
-                <div class="radio-group">
-                    <label class="radio-option"><input type="radio" name="usia" value="17-31" required> 17 - 31 tahun</label>
-                    <label class="radio-option"><input type="radio" name="usia" value="32-46"> 32 - 46 tahun</label>
-                    <label class="radio-option"><input type="radio" name="usia" value="47-61"> 47 - 61 tahun</label>
+            <div id="lanjutanForm" style="display: none;">
+                
+                <div class="polite-transition">
+                    Terima kasih atas konfirmasi Anda. Dengan kerendahan hati, saya memohon kesediaan Bapak/Ibu/Saudara/i untuk meluangkan waktu sejenak untuk melengkapi bagian pertanyaan di bawah ini.
                 </div>
-            </div>
 
-            <div class="question-block">
-                <span class="question-text">4. Pendidikan Terakhir:</span>
-                <div class="radio-group">
-                    <label class="radio-option"><input type="radio" name="pendidikan" value="Diploma" required> Diploma (D1 - D3)</label>
-                    <label class="radio-option"><input type="radio" name="pendidikan" value="S1"> S1 atau sederajat</label>
-                    <label class="radio-option"><input type="radio" name="pendidikan" value="S2"> S2 atau sederajat</label>
-                    <label class="radio-option"><input type="radio" name="pendidikan" value="S3"> S3 atau sederajat</label>
+                <div class="question-block">
+                    <span class="question-text">2. Jenis Kelamin:</span>
+                    <div class="radio-group">
+                        <label class="radio-option"><input type="radio" name="jk" value="Pria" required> Pria</label>
+                        <label class="radio-option"><input type="radio" name="jk" value="Wanita"> Wanita</label>
+                    </div>
                 </div>
-            </div>
 
-            <div class="question-block">
-                <span class="question-text">5. Jabatan/Posisi di Perusahaan:</span>
-                <div class="radio-group">
-                    <label class="radio-option"><input type="radio" name="jabatan" value="C Level" required> C Level / Direktur</label>
-                    <label class="radio-option"><input type="radio" name="jabatan" value="Manager"> Manager / General Manager (GM)</label>
-                    <label class="radio-option"><input type="radio" name="jabatan" value="Supervisor"> Supervisor</label>
-                    <label class="radio-option"><input type="radio" name="jabatan" value="Staff"> Staff</label>
+                <div class="question-block">
+                    <span class="question-text">3. Usia Anda:</span>
+                    <div class="radio-group">
+                        <label class="radio-option"><input type="radio" name="usia" value="17-31" required> 17 - 31 tahun</label>
+                        <label class="radio-option"><input type="radio" name="usia" value="32-46"> 32 - 46 tahun</label>
+                        <label class="radio-option"><input type="radio" name="usia" value="47-61"> 47 - 61 tahun</label>
+                    </div>
                 </div>
-            </div>
 
-            <div class="question-block">
-                <span class="question-text">6. Peran Anda dalam Penggunaan Aplikasi SPD:</span>
-                <div class="radio-group">
-                    <label class="radio-option"><input type="radio" name="peran" value="Requester" required> Requester (Pemohon Perjalanan Dinas)</label>
-                    <label class="radio-option"><input type="radio" name="peran" value="Approver"> Approver (Penyetuju Dokumen)</label>
+                <div class="question-block">
+                    <span class="question-text">4. Pendidikan Terakhir:</span>
+                    <div class="radio-group">
+                        <label class="radio-option"><input type="radio" name="pendidikan" value="Diploma" required> Diploma (D1 - D3)</label>
+                        <label class="radio-option"><input type="radio" name="pendidikan" value="S1"> S1 atau sederajat</label>
+                        <label class="radio-option"><input type="radio" name="pendidikan" value="S2"> S2 atau sederajat</label>
+                        <label class="radio-option"><input type="radio" name="pendidikan" value="S3"> S3 atau sederajat</label>
+                    </div>
                 </div>
-            </div>
 
-            <div class="question-block">
-                <span class="question-text">7. Masa Kerja di Perusahaan:</span>
-                <div class="radio-group">
-                    <label class="radio-option"><input type="radio" name="masa_kerja" value="<5" required> Kurang dari 5 tahun</label>
-                    <label class="radio-option"><input type="radio" name="masa_kerja" value="5-20"> 5 - 20 tahun</label>
-                    <label class="radio-option"><input type="radio" name="masa_kerja" value=">20"> Lebih dari 20 tahun</label>
+                <div class="question-block">
+                    <span class="question-text">5. Jabatan/Posisi di Perusahaan:</span>
+                    <div class="radio-group">
+                        <label class="radio-option"><input type="radio" name="jabatan" value="C Level" required> C Level / Direktur</label>
+                        <label class="radio-option"><input type="radio" name="jabatan" value="Manager"> Manager / General Manager (GM)</label>
+                        <label class="radio-option"><input type="radio" name="jabatan" value="Supervisor"> Supervisor</label>
+                        <label class="radio-option"><input type="radio" name="jabatan" value="Staff"> Staff</label>
+                    </div>
                 </div>
-            </div>
 
-            <div class="question-block">
-                <span class="question-text">8. Seberapa sering Anda menggunakan Aplikasi SPD ini?</span>
-                <div class="radio-group">
-                    <label class="radio-option"><input type="radio" name="frekuensi" value="1-2" required> 1-2 kali dalam setahun</label>
-                    <label class="radio-option"><input type="radio" name="frekuensi" value="3-5"> 3-5 kali dalam setahun</label>
-                    <label class="radio-option"><input type="radio" name="frekuensi" value=">5"> Lebih dari 5 kali dalam setahun</label>
+                <div class="question-block">
+                    <span class="question-text">6. Peran Anda dalam Penggunaan Aplikasi SPD:</span>
+                    <div class="radio-group">
+                        <label class="radio-option"><input type="radio" name="peran" value="Requester" required> Requester (Pemohon Perjalanan Dinas)</label>
+                        <label class="radio-option"><input type="radio" name="peran" value="Approver"> Approver (Penyetuju Dokumen)</label>
+                    </div>
                 </div>
-            </div>
 
-            <div class="question-block">
-                <label class="question-text" for="provinsi">9. Lokasi Perusahaan (Provinsi):</label>
-                <input list="provinsi-list" id="provinsi" name="provinsi" class="form-control" placeholder="-- Ketik atau cari Provinsi --" required autocomplete="off">
-                <datalist id="provinsi-list">
-                    </datalist>
-                <small style="color: var(--text-muted); font-size: 13px; margin-top: 6px; display: inline-block;">*Ketik nama provinsi untuk pencarian cepat.</small>
-            </div>
-
-            <div class="question-block" style="margin-bottom: 45px;">
-                <label class="question-text" for="kota">10. Lokasi Perusahaan (Kota/Kabupaten):</label>
-                <select id="kota" name="kota" class="form-control" required disabled>
-                    <option value="" disabled selected>-- Pilih Kota/Kabupaten --</option>
-                </select>
-            </div>
-
-            <h2 class="section-title">B. Evaluasi Aplikasi Berdasarkan Pengalaman Anda</h2>
-            <div id="likert-container">
+                <div class="question-block">
+                    <span class="question-text">7. Masa Kerja di Perusahaan:</span>
+                    <div class="radio-group">
+                        <label class="radio-option"><input type="radio" name="masa_kerja" value="<5" required> Kurang dari 5 tahun</label>
+                        <label class="radio-option"><input type="radio" name="masa_kerja" value="5-20"> 5 - 20 tahun</label>
+                        <label class="radio-option"><input type="radio" name="masa_kerja" value=">20"> Lebih dari 20 tahun</label>
+                    </div>
                 </div>
-            
-        </div>
 
-        <button type="submit" class="submit-btn">Kirim Tanggapan Kuesioner</button>
-    </form>
+                <div class="question-block">
+                    <span class="question-text">8. Seberapa sering Anda menggunakan Aplikasi SPD ini?</span>
+                    <div class="radio-group">
+                        <label class="radio-option"><input type="radio" name="frekuensi" value="Jarang" required> Jarang</label>
+                        <label class="radio-option"><input type="radio" name="frekuensi" value="Kadang-kadang"> Kadang-kadang</label>
+                        <label class="radio-option"><input type="radio" name="frekuensi" value="Sering"> Sering</label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text" for="provinsiBtn">9. Lokasi Perusahaan (Provinsi):</label>
+                    <div class="custom-dropdown" id="provinsiWrapper">
+                        <button type="button" class="form-control dropdown-btn" id="provinsiBtn" onclick="toggleProvinsiDropdown()">-- Ketik atau cari Provinsi --</button>
+                        <div id="provinsiDropdownContent" class="dropdown-content">
+                            <input type="text" placeholder="Cari Provinsi..." id="provinsiSearch" class="dropdown-search" onkeyup="filterProvinsi()" autocomplete="off">
+                            <div id="provinsiList"></div>
+                        </div>
+                    </div>
+                    <input type="text" id="provinsiHidden" name="provinsi" required style="opacity:0; position:absolute; z-index:-1; width:1px; height:1px; bottom:0;">
+                </div>
+
+                <div class="question-block" style="margin-bottom: 45px;">
+                    <label class="question-text" for="kota">10. Lokasi Perusahaan (Kota/Kabupaten):</label>
+                    <select id="kota" name="kota" class="form-control" required disabled>
+                        <option value="" disabled selected>-- Pilih Kota/Kabupaten --</option>
+                    </select>
+                </div>
+
+                <h2 class="section-title">B. Evaluasi Aplikasi Berdasarkan Pengalaman Anda</h2>
+                <div id="likert-container"></div>
+                
+            </div>
+
+            <button type="submit" class="submit-btn">Kirim Tanggapan Kuesioner</button>
+        </form>
+    </div>
 </div>
 
 <script>
@@ -565,28 +672,82 @@
       { "provinsi": "Papua Barat Daya", "ibukota": "Sorong", "kota": ["Sorong"] }
     ];
 
-    const inputProvinsi = document.getElementById('provinsi');
-    const datalistProvinsi = document.getElementById('provinsi-list');
+    // LOGIKA CUSTOM DROPDOWN PROVINSI
+    const btnProvinsi = document.getElementById('provinsiBtn');
+    const contentProvinsi = document.getElementById('provinsiDropdownContent');
+    const listProvinsi = document.getElementById('provinsiList');
+    const searchProvinsi = document.getElementById('provinsiSearch');
+    const hiddenProvinsi = document.getElementById('provinsiHidden');
     const selectKota = document.getElementById('kota');
 
-    // Inject data ke Datalist Provinsi
     provinsiData.forEach(item => {
-        const option = document.createElement('option');
-        option.value = item.provinsi;
-        datalistProvinsi.appendChild(option);
+        const div = document.createElement('div');
+        div.className = 'dropdown-item';
+        div.textContent = item.provinsi;
+        div.onclick = function() {
+            selectProvinsi(item.provinsi);
+        };
+        listProvinsi.appendChild(div);
     });
 
-    // Validasi dan Filter Kota saat Provinsi diketik/dipilih
-    inputProvinsi.addEventListener('change', function() {
-        const selectedProv = this.value;
-        const provData = provinsiData.find(p => p.provinsi === selectedProv);
+    function toggleProvinsiDropdown() {
+        contentProvinsi.classList.toggle("show");
+        if (contentProvinsi.classList.contains("show")) {
+            searchProvinsi.focus();
+        }
+    }
 
-        if (provData) {
-            // Jika provinsi valid ditemukan
+    function filterProvinsi() {
+        const filter = searchProvinsi.value.toUpperCase();
+        const items = listProvinsi.getElementsByClassName('dropdown-item');
+        for (let i = 0; i < items.length; i++) {
+            const txtValue = items[i].textContent || items[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                items[i].style.display = "";
+            } else {
+                items[i].style.display = "none";
+            }
+        }
+    }
+
+    function selectProvinsi(provinsiName) {
+        btnProvinsi.textContent = provinsiName;
+        btnProvinsi.classList.add("selected");
+        hiddenProvinsi.value = provinsiName; 
+        contentProvinsi.classList.remove("show");
+        searchProvinsi.value = "";
+        filterProvinsi();
+        updateKotaDropdown(provinsiName);
+    }
+
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropdown-btn') && !event.target.matches('.dropdown-search')) {
+            if (contentProvinsi.classList.contains('show')) {
+                contentProvinsi.classList.remove('show');
+            }
+        }
+    }
+
+    // Fungsi Populate Kota (Ditambah Logika DKI Jakarta)
+    function updateKotaDropdown(selectedProv) {
+        selectKota.innerHTML = ''; // Bersihkan dulu
+
+        if (selectedProv === "DKI Jakarta") {
+            // Khusus DKI Jakarta, otomatis isi Jakarta dan disable
+            const option = document.createElement('option');
+            option.value = "Jakarta";
+            option.textContent = "Jakarta";
+            option.selected = true;
+            selectKota.appendChild(option);
+            selectKota.disabled = true;
+        } else {
+            // Provinsi lain
             selectKota.disabled = false;
             selectKota.innerHTML = '<option value="" disabled selected>-- Pilih Kota/Kabupaten --</option>';
 
-            if (provData.kota) {
+            const provData = provinsiData.find(p => p.provinsi === selectedProv);
+
+            if (provData && provData.kota) {
                 provData.kota.forEach(namaKota => {
                     const option = document.createElement('option');
                     option.value = namaKota;
@@ -599,13 +760,8 @@
             optionLainnya.value = "Lainnya";
             optionLainnya.textContent = "Lainnya";
             selectKota.appendChild(optionLainnya);
-        } else {
-            // Jika user mengetik sembarangan yang tidak ada di list
-            this.value = ''; 
-            selectKota.disabled = true;
-            selectKota.innerHTML = '<option value="" disabled selected>-- Pilih Kota/Kabupaten --</option>';
         }
-    });
+    }
 
     // 2. Data Pertanyaan Bagian B
     const kuesionerData = [
@@ -700,7 +856,6 @@
     const scaleValues = ["1", "2", "3", "4", "5"];
     const scaleLabelsHeader = ["Sangat Tidak Setuju", "Tidak Setuju", "Netral", "Setuju", "Sangat Setuju"];
 
-    // Render Matrix / Grid dengan Penambahan Index dan Span
     kuesionerData.forEach((construct, index) => {
         const wrapper = document.createElement('div');
         wrapper.className = 'construct-wrapper';
@@ -711,11 +866,9 @@
         const title = document.createElement('h3');
         title.className = 'construct-title';
         
-        // Menambahkan Nomor Index (1, 2, 3...) dan Judul
         const titleText = document.createTextNode(`${index + 1}. ${construct.title} `);
         title.appendChild(titleText);
 
-        // Menambahkan Span Khusus untuk [X Pertanyaan] dengan warna Terracotta
         const countSpan = document.createElement('span');
         countSpan.className = 'question-count';
         countSpan.textContent = `[${construct.questions.length} Pertanyaan]`;
@@ -791,7 +944,7 @@
     const lanjutanForm = document.getElementById('lanjutanForm');
     const radioPernahPakai = document.querySelectorAll('input[name="pernah_pakai"]');
 
-    lanjutanForm.querySelectorAll('input, select').forEach(el => {
+    lanjutanForm.querySelectorAll('input[type="radio"], select, input[type="text"]').forEach(el => {
         if (el.required) {
             el.setAttribute('data-original-required', 'true');
             el.required = false;
@@ -802,14 +955,14 @@
         radio.addEventListener('change', function() {
             if (this.value === 'Ya') {
                 lanjutanForm.style.display = 'block';
-                lanjutanForm.querySelectorAll('input, select').forEach(el => {
+                lanjutanForm.querySelectorAll('input[type="radio"], select, input[type="text"]').forEach(el => {
                     if (el.getAttribute('data-original-required') === 'true') {
                         el.required = true;
                     }
                 });
             } else {
                 lanjutanForm.style.display = 'none';
-                lanjutanForm.querySelectorAll('input, select').forEach(el => {
+                lanjutanForm.querySelectorAll('input[type="radio"], select, input[type="text"]').forEach(el => {
                     el.required = false;
                 });
             }
@@ -824,31 +977,33 @@
     form.addEventListener('submit', function(e) {
         e.preventDefault(); 
         
+        if (lanjutanForm.style.display === 'block' && hiddenProvinsi.value === '') {
+            alert("Mohon pilih Lokasi Perusahaan (Provinsi) terlebih dahulu.");
+            btnProvinsi.focus(); 
+            return;
+        }
+
         submitBtn.textContent = "Mengirim Data...";
         submitBtn.disabled = true;
 
+        // Trik agar data kota yang di-disable (DKI Jakarta) tetap terkirim oleh FormData
+        const isKotaDisabled = selectKota.disabled;
+        selectKota.disabled = false;
+
         const formData = new FormData(form);
+
+        // Kembalikan status disable-nya setelah data diambil
+        selectKota.disabled = isKotaDisabled;
 
         fetch(scriptURL, { method: 'POST', body: formData })
             .then(response => {
-                alert("Terima kasih! Kuesioner berhasil diisi dan data telah masuk ke sistem kami.");
-                
-                form.reset(); 
-                lanjutanForm.style.display = 'none';
-                
-                // Reset kota
-                selectKota.innerHTML = '<option value="" disabled selected>-- Pilih Kota/Kabupaten --</option>';
-                selectKota.disabled = true;
-
-                submitBtn.textContent = "Kirim Tanggapan Kuesioner";
-                submitBtn.disabled = false;
-                
+                document.getElementById('formWrapper').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
                 window.scrollTo(0, 0);
             })
             .catch(error => {
                 console.error('Error!', error.message);
                 alert("Terjadi kesalahan saat mengirim data. Pastikan koneksi internet Anda stabil.");
-                
                 submitBtn.textContent = "Kirim Tanggapan Kuesioner";
                 submitBtn.disabled = false;
             });
