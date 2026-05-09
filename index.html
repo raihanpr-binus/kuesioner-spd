@@ -102,6 +102,34 @@
             line-height: 1.6;
         }
 
+        /* Kotak Instruksi Bagian B */
+        .instruction-box {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            font-size: 14.5px;
+            line-height: 1.6;
+            color: var(--text-main);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .instruction-box strong {
+            color: var(--primary-dark);
+            font-size: 15.5px;
+        }
+
+        .legend-scale {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px dashed var(--border-color);
+            font-weight: 600;
+            color: var(--accent-dark);
+            font-size: 14px;
+            text-align: center;
+        }
+
         /* Bagian Pertanyaan Umum (Identitas) */
         .question-block {
             margin-bottom: 28px;
@@ -164,6 +192,14 @@
             color: var(--text-main);
             transition: all 0.3s;
             background-color: #fff;
+        }
+
+        /* Styling Input Teks Khusus Searchable Dropdown */
+        input.form-control[list] {
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22none%22%20stroke%3D%22%238b8882%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2211%22%20cy%3D%2211%22%20r%3D%228%22%3E%3C%2Fcircle%3E%3Cline%20x1%3D%2221%22%20y1%3D%2221%22%20x2%3D%2216.65%22%20y2%3D%2216.65%22%3E%3C%2Fline%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px top 50%;
+            background-size: 16px auto;
         }
 
         select.form-control {
@@ -488,6 +524,11 @@
                 color: var(--text-muted);
                 font-weight: 500;
             }
+            
+            .legend-scale {
+                font-size: 12px;
+                line-height: 1.8;
+            }
         }
     </style>
 </head>
@@ -495,6 +536,7 @@
 
 <div class="container">
     
+    <!-- HALAMAN SUKSES -->
     <div id="successMessage" style="display: none;">
         <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 20px;">
             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
@@ -504,6 +546,7 @@
         <p>Tanggapan Anda telah berhasil disimpan di dalam sistem kami.<br>Waktu dan partisipasi Anda sangat berharga bagi kelancaran penelitian tesis ini.</p>
     </div>
 
+    <!-- WRAPPER FORM -->
     <div id="formWrapper">
         <div class="form-header">
             <h1>Kuesioner Evaluasi Penggunaan Aplikasi Surat Perjalanan Dinas (SPD)</h1>
@@ -532,6 +575,7 @@
                 </div>
             </div>
 
+            <!-- BAGIAN LANJUTAN -->
             <div id="lanjutanForm" style="display: none;">
                 
                 <div class="polite-transition">
@@ -552,7 +596,6 @@
                         <label class="radio-option"><input type="radio" name="usia" value="17-31" required> 17 - 31 tahun</label>
                         <label class="radio-option"><input type="radio" name="usia" value="32-46"> 32 - 46 tahun</label>
                         <label class="radio-option"><input type="radio" name="usia" value="47-61"> 47 - 61 tahun</label>
-						<label class="radio-option"><input type="radio" name="usia" value="Lainnya"> Lainnya</label>
                     </div>
                 </div>
 
@@ -602,6 +645,7 @@
                     </div>
                 </div>
 
+                <!-- CUSTOM SEARCHABLE DROPDOWN PROVINSI -->
                 <div class="question-block">
                     <label class="question-text" for="provinsiBtn">9. Lokasi Perusahaan (Provinsi):</label>
                     <div class="custom-dropdown" id="provinsiWrapper">
@@ -621,8 +665,21 @@
                     </select>
                 </div>
 
+                <!-- BAGIAN B -->
                 <h2 class="section-title">B. Evaluasi Aplikasi Berdasarkan Pengalaman Anda</h2>
-                <div id="likert-container"></div>
+                
+                <!-- KOTAK INSTRUKSI -->
+                <div class="instruction-box">
+                    <strong>Petunjuk Pengisian:</strong><br>
+                    Pilihlah salah satu jawaban yang paling sesuai dengan pengalaman dan penilaian Anda selama menggunakan aplikasi Surat Perjalanan Dinas (SPD) berbasis <em>online/web/mobile</em> di instansi atau perusahaan tempat Anda bekerja saat ini.
+                    <div class="legend-scale">
+                        (1 = Sangat Tidak Setuju &nbsp;|&nbsp; 2 = Tidak Setuju &nbsp;|&nbsp; 3 = Netral &nbsp;|&nbsp; 4 = Setuju &nbsp;|&nbsp; 5 = Sangat Setuju)
+                    </div>
+                </div>
+
+                <div id="likert-container">
+                    <!-- Tabel Matrix Di-Render via JavaScript -->
+                </div>
                 
             </div>
 
@@ -729,12 +786,10 @@
         }
     }
 
-    // Fungsi Populate Kota (Ditambah Logika DKI Jakarta)
     function updateKotaDropdown(selectedProv) {
-        selectKota.innerHTML = ''; // Bersihkan dulu
+        selectKota.innerHTML = ''; 
 
         if (selectedProv === "DKI Jakarta") {
-            // Khusus DKI Jakarta, otomatis isi Jakarta dan disable
             const option = document.createElement('option');
             option.value = "Jakarta";
             option.textContent = "Jakarta";
@@ -742,7 +797,6 @@
             selectKota.appendChild(option);
             selectKota.disabled = true;
         } else {
-            // Provinsi lain
             selectKota.disabled = false;
             selectKota.innerHTML = '<option value="" disabled selected>-- Pilih Kota/Kabupaten --</option>';
 
@@ -987,13 +1041,11 @@
         submitBtn.textContent = "Mengirim Data...";
         submitBtn.disabled = true;
 
-        // Trik agar data kota yang di-disable (DKI Jakarta) tetap terkirim oleh FormData
         const isKotaDisabled = selectKota.disabled;
         selectKota.disabled = false;
 
         const formData = new FormData(form);
 
-        // Kembalikan status disable-nya setelah data diambil
         selectKota.disabled = isKotaDisabled;
 
         fetch(scriptURL, { method: 'POST', body: formData })
