@@ -304,9 +304,15 @@
         }
 
         .construct-desc {
-            font-size: 13px;
-            color: var(--text-muted);
-            line-height: 1.5;
+            font-size: 14.5px;
+            font-weight: 500;
+            color: var(--accent-dark);
+            line-height: 1.6;
+            margin-top: 6px;
+            padding: 8px 12px;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-left: 3px solid var(--accent-color);
+            border-radius: 4px;
         }
 
         .matrix-table {
@@ -723,73 +729,73 @@
     }
 
     const kuesionerData = [
-        { title: "Kualitas Sistem (System Quality - SQ)", desc: "Mengevaluasi keandalan teknis dan kemudahan aplikasi.", 
+        { title: "Kualitas Sistem (System Quality - SQ)", desc: "Melihat seberapa mudah dan lancar aplikasi ini saat Anda gunakan sehari-hari.", 
           questions: [
-            { id: "SQ1", text: "Aplikasi SPD di kantor saya menyediakan bantuan dan penjelasan sistem yang memadai." },
-            { id: "SQ2", text: "Tampilan antarmuka aplikasi SPD di kantor saya memuaskan secara visual/estetika." },
-            { id: "SQ3", text: "Aplikasi SPD di kantor saya memiliki waktu respons yang cepat (tidak lambat)." },
-            { id: "SQ4", text: "Aplikasi SPD di kantor saya sangat mudah digunakan (user-friendly)." },
-            { id: "SQ5", text: "Aplikasi SPD di kantor saya menyediakan fitur interaktif yang baik antara pengguna dan sistem." }
+            { id: "SQ1", text: "Aplikasi SPD memberikan panduan atau petunjuk yang jelas jika saya kebingungan." },
+            { id: "SQ2", text: "Tampilan aplikasi SPD ini rapi, bagus, dan enak dilihat." },
+            { id: "SQ3", text: "Aplikasi SPD ini berjalan lancar saat digunakan (tidak lemot/loading lama)." },
+            { id: "SQ4", text: "Aplikasi SPD ini sangat mudah dipahami dan digunakan oleh siapa saja." },
+            { id: "SQ5", text: "Semua menu dan tombol di dalam aplikasi SPD berfungsi dengan baik tanpa error." }
           ]
         },
-        { title: "Kualitas Informasi (Information Quality - IQ)", desc: "Mengevaluasi mutu, kelengkapan, dan kerapian output data.", 
+        { title: "Kualitas Informasi (Information Quality - IQ)", desc: "Mengukur seberapa lengkap, jelas, dan rapinya data yang ditampilkan oleh aplikasi.", 
           questions: [
-            { id: "IQ1", text: "Aplikasi SPD di kantor saya menyediakan informasi yang relevan dengan kebutuhan tugas saya." },
-            { id: "IQ2", text: "Aplikasi SPD di kantor saya menyediakan informasi yang komprehensif (lengkap)." },
-            { id: "IQ3", text: "Aplikasi SPD di kantor saya menyediakan informasi yang persis seperti yang saya butuhkan." },
-            { id: "IQ4", text: "Aplikasi SPD di kantor saya memberikan saya informasi dan data yang tersusun dengan rapi." },
-            { id: "IQ5", text: "Aplikasi SPD di kantor saya menyediakan konten dan informasi yang mutakhir (up-to-date)." }
+            { id: "IQ1", text: "Informasi yang ada di dalam aplikasi sudah sesuai dengan kebutuhan pekerjaan saya." },
+            { id: "IQ2", text: "Informasi dan data yang ditampilkan oleh aplikasi sudah sangat lengkap." },
+            { id: "IQ3", text: "Aplikasi ini memberikan informasi yang tepat sasaran sesuai dengan yang saya cari." },
+            { id: "IQ4", text: "Data dan laporan di dalam aplikasi SPD ini tersusun dengan rapi." },
+            { id: "IQ5", text: "Informasi di dalam aplikasi SPD ini selalu diperbarui (up-to-date)." }
           ]
         },
-        { title: "Kualitas Layanan (Service Quality - SEQ)", desc: "Mengevaluasi dukungan teknis dan layanan bantuan.", 
+        { title: "Kualitas Layanan (Service Quality - SEQ)", desc: "Melihat seberapa cepat dan tanggap bantuan dari tim IT/Admin saat Anda mengalami kendala.", 
           questions: [
-            { id: "SEQ1", text: "Aplikasi SPD di kantor saya beserta layanannya dapat saya akses dari mana saja dan kapan saja." },
-            { id: "SEQ2", text: "Tim dukungan teknis (IT/Admin) cepat tanggap dalam merespons dan menyelesaikan kendala." },
-            { id: "SEQ3", text: "Tim dukungan teknis memahami dengan baik setiap permasalahan aplikasi yang saya laporkan." },
-            { id: "SEQ4", text: "Tim dukungan teknis dapat diandalkan untuk mengatasi berbagai permasalahan." }
+            { id: "SEQ1", text: "Aplikasi SPD ini bisa saya buka dari mana saja dan kapan saja tanpa hambatan." },
+            { id: "SEQ2", text: "Tim IT atau Admin sangat cepat membantu jika ada masalah atau error pada aplikasi." },
+            { id: "SEQ3", text: "Tim IT atau Admin langsung mengerti keluhan saya saat saya melaporkan masalah aplikasi." },
+            { id: "SEQ4", text: "Tim IT atau Admin selalu bisa diandalkan untuk memperbaiki gangguan pada aplikasi." }
           ]
         },
-        { title: "Kepuasan Pengguna (User Satisfaction - US)", desc: "Mengukur tingkat kenyamanan dan pengalaman personal Anda.", 
+        { title: "Kepuasan Pengguna (User Satisfaction - US)", desc: "Mengetahui seberapa puas dan nyaman Anda menggunakan aplikasi ini secara keseluruhan.", 
           questions: [
-            { id: "US1", text: "Saya merasa puas dengan fitur-fitur yang disediakan oleh aplikasi SPD di kantor saya." },
-            { id: "US2", text: "Penggunaan aplikasi SPD di kantor saya ini benar-benar memudahkan saya dalam memproses pengajuan." },
-            { id: "US3", text: "Saya merasa puas dengan tampilan antarmuka (user interface) aplikasi SPD." },
-            { id: "US4", text: "Saya merasa puas dengan layanan dukungan dari tim teknis (IT/Admin)." },
-            { id: "US5", text: "Secara keseluruhan, saya merasa puas menggunakan aplikasi SPD di kantor saya." }
+            { id: "US1", text: "Saya puas dengan fitur-fitur yang disediakan oleh aplikasi SPD ini." },
+            { id: "US2", text: "Aplikasi ini benar-benar membuat proses pengajuan perjalanan dinas jadi jauh lebih mudah." },
+            { id: "US3", text: "Saya merasa puas dengan desain dan tata letak menu di aplikasi SPD." },
+            { id: "US4", text: "Saya puas dengan bantuan yang diberikan oleh tim IT/Admin sejauh ini." },
+            { id: "US5", text: "Secara keseluruhan, saya sangat puas menggunakan aplikasi SPD di kantor saya." }
           ]
         },
-        { title: "Karakteristik Teknologi (Technology Characteristics - TEC)", desc: "Dukungan rutinitas pekerjaan dari sisi teknologi.", 
+        { title: "Karakteristik Teknologi (Technology Characteristics - TEC)", desc: "Menilai apakah fitur-fitur di dalam aplikasi sudah benar-benar mendukung kebiasaan kerja Anda.", 
           questions: [
-            { id: "TEC1", text: "Sistem SPD di kantor saya memungkinkan saya mengakses sumber dokumen kapan saja." },
-            { id: "TEC2", text: "Sistem SPD di kantor saya memberikan konektivitas tanpa gangguan." },
-            { id: "TEC3", text: "Sistem SPD di kantor saya menyediakan fungsi berbagi dokumen dan sinkronisasi data yang baik." },
-            { id: "TEC4", text: "Sistem SPD di kantor saya memungkinkan saya mengakses informasi pada berbagai perangkat." },
-            { id: "TEC5", text: "Sistem SPD menyediakan fitur pembaruan status persetujuan dan kemudahan mengunggah lampiran." }
+            { id: "TEC1", text: "Aplikasi ini memudahkan saya melihat atau mendownload dokumen kapan pun saya butuh." },
+            { id: "TEC2", text: "Aplikasi ini jarang mengalami gangguan server atau putus koneksi saat sedang dipakai." },
+            { id: "TEC3", text: "Fitur untuk berbagi dokumen dan pembaruan data otomatis di aplikasi ini berjalan lancar." },
+            { id: "TEC4", text: "Saya bisa membuka aplikasi ini dari berbagai perangkat dengan mudah (seperti lewat HP, laptop, atau tablet)." },
+            { id: "TEC5", text: "Saya bisa dengan mudah melacak status persetujuan atasan dan mengupload file bukti pendukung." }
           ]
         },
-        { title: "Karakteristik Tugas (Task Characteristics - TAC)", desc: "Persepsi terhadap tuntutan rutinitas pekerjaan.", 
+        { title: "Karakteristik Tugas (Task Characteristics - TAC)", desc: "Melihat gambaran tuntutan dan rutinitas kerja Anda sehari-hari terkait perjalanan dinas.", 
           questions: [
-            { id: "TAC1", text: "Pekerjaan saya menuntut saya untuk mengakses data perjalanan dinas kapan saja." },
-            { id: "TAC2", text: "Pekerjaan saya menuntut komunikasi yang sinkron antara saya dengan atasan dan rekan kerja." },
-            { id: "TAC3", text: "Pekerjaan saya sering membutuhkan pertukaran dokumen dan informasi dengan pihak lain." },
-            { id: "TAC4", text: "Integrasi dan sinkronisasi informasi sangat diperlukan untuk pekerjaan saya." },
-            { id: "TAC5", text: "Saya sering perlu berkoordinasi dengan rekan lain untuk melengkapi proses pekerjaan." }
+            { id: "TAC1", text: "Pekerjaan saya memang mengharuskan saya mengecek data perjalanan dinas sewaktu-waktu." },
+            { id: "TAC2", text: "Pekerjaan saya menuntut komunikasi yang serba cepat antara saya, rekan kerja, dan atasan." },
+            { id: "TAC3", text: "Saya sering harus mengirim dan bertukar dokumen terkait perjalanan dinas dengan orang lain." },
+            { id: "TAC4", text: "Pekerjaan saya sangat bergantung pada data yang otomatis tersinkronisasi dan selalu update." },
+            { id: "TAC5", text: "Saya sering harus berkoordinasi dengan rekan kerja lain agar urusan dinas ini bisa cepat selesai." }
           ]
         },
-        { title: "Kesesuaian Tugas-Teknologi (Task-Technology Fit - TTF)", desc: "Keselarasan antara fitur aplikasi dengan cara kerja Anda.", 
+        { title: "Kesesuaian Tugas-Teknologi (Task-Technology Fit - TTF)", desc: "Mengukur seberapa pas aplikasi ini dalam membantu kelancaran tugas harian Anda.", 
           questions: [
-            { id: "TTF1", text: "Aplikasi SPD sangat sesuai dengan cara saya menyelesaikan administrasi dinas." },
-            { id: "TTF2", text: "Aplikasi SPD di kantor saya adalah alat yang tepat untuk mendukung rutinitas pekerjaan dinas." },
-            { id: "TTF3", text: "Penggunaan aplikasi SPD sangat selaras (fit) dengan alur kerja yang biasa saya lakukan." },
-            { id: "TTF4", text: "Menggunakan aplikasi SPD adalah cara yang baik untuk mengelola tugas perjalanan dinas." },
-            { id: "TTF5", text: "Fungsi-fungsi pada aplikasi SPD sangat cocok untuk membantu saya merampungkan pekerjaan." }
+            { id: "TTF1", text: "Aplikasi ini sangat pas dengan cara saya mengurus administrasi perjalanan dinas." },
+            { id: "TTF2", text: "Aplikasi ini adalah alat bantu yang paling tepat untuk mendukung pekerjaan dinas saya." },
+            { id: "TTF3", text: "Cara kerja aplikasi ini sudah sejalan dan tidak bertentangan dengan alur kerja saya biasanya." },
+            { id: "TTF4", text: "Menggunakan aplikasi ini adalah pilihan terbaik untuk mengatur semua tugas perjalanan dinas." },
+            { id: "TTF5", text: "Semua menu di aplikasi ini sangat cocok dan memang saya butuhkan untuk menyelesaikan pekerjaan." }
           ]
         },
-        { title: "Manfaat Bersih / Kinerja Individu (Net Benefits - NB)", desc: "Dampak positif penggunaan aplikasi terhadap efisiensi.", 
+        { title: "Manfaat Bersih / Kinerja (Net Benefits - NB)", desc: "Melihat sejauh mana aplikasi ini benar-benar memberikan manfaat dan menghemat waktu Anda.", 
           questions: [
-            { id: "NB1", text: "Aplikasi SPD membantu meningkatkan kualitas pengambilan keputusan." },
-            { id: "NB2", text: "Penggunaan aplikasi SPD terbukti menghemat waktu penyelesaian pekerjaan administratif." },
-            { id: "NB3", text: "Aplikasi SPD di kantor saya meningkatkan efektivitas kerja saya secara keseluruhan." }
+            { id: "NB1", text: "Aplikasi ini membantu saya atau atasan mengambil keputusan terkait dinas dengan lebih cepat dan akurat." },
+            { id: "NB2", text: "Aplikasi ini terbukti sangat menghemat waktu saya dalam membereskan tumpukan berkas administrasi." },
+            { id: "NB3", text: "Secara keseluruhan, aplikasi ini membuat performa kerja saya jadi lebih cepat dan produktif." }
           ]
         }
     ];
